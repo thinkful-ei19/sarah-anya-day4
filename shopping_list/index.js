@@ -1,11 +1,11 @@
 'use strict';
 
-function AddItems () {
 const shoppingList = $('.js-shopping-list');
+
+function AddItems () {
 $('#js-shopping-list-form').submit(function(event) {
   event.preventDefault()
   const inputItem = $('.js-shopping-list-entry');
-  console.log(inputItem);
   let newHTML = (  `
   <li>
     <span class="shopping-item">${inputItem.val()}</span>
@@ -21,11 +21,20 @@ $('#js-shopping-list-form').submit(function(event) {
 `);
   shoppingList.append(newHTML);
 });
-console.log('add item ran');
 };
 
-// function CheckItems
+function CheckItems() {
+  shoppingList.on('click', '.shopping-item-toggle', function(event) {
+    $(event.target).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
+  })
+}
 
-// function DeleteItems
+function DeleteItems() {
+  shoppingList.on('click', '.shopping-item-delete', function(event) {
+    $(event.target).closest('li').remove();
+  })
+}
 
 $(AddItems())
+$(CheckItems());
+$(DeleteItems());
