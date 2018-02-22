@@ -23,9 +23,9 @@ function addItems () {
   $('#js-shopping-list-form').submit(function(event) {
     event.preventDefault();
     const inputItem = $('.js-shopping-list-entry').val();
-    const toAppendItem = $(newHTML);
-    toAppendItem.find('.shopping-item').text(inputItem);
-    shoppingList.append(toAppendItem);
+    const toPrependItem = $(newHTML);
+    toPrependItem.find('.shopping-item').text(inputItem);
+    shoppingList.prepend(toPrependItem);
   });
 }
 
